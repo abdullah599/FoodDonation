@@ -15,8 +15,9 @@ import com.example.fooddonation.databinding.ActivityDonorDashboardBinding
 
 class DonorDashboard : AppCompatActivity() {
 
-	private lateinit var appBarConfiguration: AppBarConfiguration
 	private lateinit var binding: ActivityDonorDashboardBinding
+	private lateinit var appBarConfiguration: AppBarConfiguration
+
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
