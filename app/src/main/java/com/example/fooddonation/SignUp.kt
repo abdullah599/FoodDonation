@@ -15,8 +15,9 @@ class SignUp : AppCompatActivity() {
         val binding: ActivitySignUpBinding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-var intent=Intent(this, DonorDashboard::class.java)
-        startActivity(intent)
+
+//        var intent=Intent(this, DonorDashboard::class.java)
+//        startActivity(intent)
         binding.btnNext.setOnClickListener()
         {
             /** to move to next activity i.e Sign Up 2 **/
@@ -85,7 +86,7 @@ var intent=Intent(this, DonorDashboard::class.java)
             startActivity(i)
         }
 
-        /** If a user has already have an account and want to login **/
+        /** If a user already have an account and want to login **/
         binding.tvLoginClick.setOnClickListener()
         {
             val i = Intent(this, Login::class.java)

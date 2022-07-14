@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fooddonation.databinding.ActivityReceiverDashboardBinding
+import com.google.android.gms.common.util.CollectionUtils.setOf
 
 class ReceiverDashboard : AppCompatActivity() {
 
