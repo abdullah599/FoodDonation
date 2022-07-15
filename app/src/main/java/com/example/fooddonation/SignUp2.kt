@@ -106,13 +106,4 @@ class SignUp2 : AppCompatActivity() {
         }
 
     }
-
-    /** Checking if a user is logged in or not **/
-    override fun onStart() {
-        super.onStart()
-        if(auth.currentUser != null)
-        {
-            // handle already logged in
-        }
-    }
 }

@@ -6,7 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.fooddonation.databinding.ActivitySignUpBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
+private lateinit var auth: FirebaseAuth;
 
 class SignUp : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
@@ -16,6 +24,7 @@ class SignUp : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        auth = Firebase.auth
 //        var intent=Intent(this, DonorDashboard::class.java)
 //        startActivity(intent)
         binding.btnNext.setOnClickListener()
@@ -93,5 +102,53 @@ class SignUp : AppCompatActivity() {
             startActivity(i)
         }
 
+    }
+
+    /** Checking if a user is logged in or not **/
+    override fun onStart() {
+        super.onStart()
+        if(auth.currentUser != null)
+        {
+            val database = Firebase.database
+            /** Logging in if the user is a donor **/
+            var ref = database.getReference("Users").child("Donor")
+            ref.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(value in snapshot.children)
+                    {
+                        if (value.key == auth.currentUser?.uid)
+                        {
+                            val i = Intent(applicationContext, DonorDashboard::class.java)
+                            startActivity(i)
+                            finish()
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    //Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+            /** Logging in if the user is a receiver **/
+            ref = database.getReference("Users").child("Receiver")
+            ref.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(value in snapshot.children)
+                    {
+                        if (value.key == auth.currentUser?.uid)
+                        {
+                            val i = Intent(applicationContext, ReceiverDashboard::class.java)
+                            startActivity(i)
+                            finish()
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    //Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
     }
 }
