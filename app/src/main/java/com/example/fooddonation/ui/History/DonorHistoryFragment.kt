@@ -26,6 +26,9 @@ class DonorHistoryFragment : Fragment() {
 
 		val textView: TextView = binding.textHistory
 		textView.text="History"
+
+
+
 		return root
 	}
 
