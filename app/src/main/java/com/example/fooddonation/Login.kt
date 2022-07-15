@@ -28,6 +28,13 @@ class Login : AppCompatActivity() {
         // initializing auth
         auth = Firebase.auth
 
+
+        /** Checking if a user is already logged in - then logout the user **/
+        if(auth.currentUser != null)
+        {
+            auth.signOut()
+        }
+
         /** Checks for empty fields **/
         binding.btnLogin.setOnClickListener()
         {

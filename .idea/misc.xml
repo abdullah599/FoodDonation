@@ -3,52 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/drawable/edit_text.xml" value="0.1945" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/layout/activity_sign_up2.xml" value="0.22" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_donor_dashboard.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_login.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_main.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_receiver_dashboard.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_sign_up.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_sign_up2.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/donor_history_row.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/fragment_donor_history.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/fragment_donor_home.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_donor_dashboard.xml" value="0.264" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_login.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_main.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_receiver_dashboard.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_sign_up.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_sign_up2.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/app_bar_donor_dashboard.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/app_bar_receiver_dashboard.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/content_donor_dashboard.xml" value="0.2" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/content_receiver_dashboard.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/fragment_donor_history.xml" value="0.1" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/fragment_donor_home.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/fragment_gallery.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/fragment_receiver_history.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/fragment_receiver_home.xml" value="0.1" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/fragment_slideshow.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/nav_header_donor_dashboard.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/nav_header_receiver_dashboard.xml" value="0.1" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/rd_nav_header.xml" value="0.4" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/menu/activity_donor_dashboard_drawer.xml" value="0.4" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/menu/activity_main_drawer.xml" value="0.264" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/menu/activity_receiver_dashboard_drawer.xml" value="0.264" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/menu/donor_dashboard.xml" value="0.4" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/menu/rd_nav_menu.xml" value="0.536" />
-        <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/menu/receiver_dashboard.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/activity_donor_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/fragment_donor_history.xml" value="0.22" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/nav_header_donor_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/nav_header_receiver_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/menu/activity_donor_dashboard_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/menu/activity_receiver_dashboard_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/menu/donor_dashboard.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
