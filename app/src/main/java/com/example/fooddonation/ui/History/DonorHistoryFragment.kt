@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fooddonation.Adapter_Dataclasses.DonorHistoryAdapter
+import com.example.fooddonation.Adapter_Dataclasses.donor_history_data
 import com.example.fooddonation.databinding.FragmentDonorHistoryBinding
 
 
@@ -26,6 +29,10 @@ class DonorHistoryFragment : Fragment() {
 
 		val textView: TextView = binding.textHistory
 		textView.text="History"
+		var array= mutableListOf(donor_history_data("Pizza", "Home Made","Not delivered"))
+		val adapter=DonorHistoryAdapter(array,this.requireContext())
+		binding.rvHistory.adapter=adapter
+		binding.rvHistory.layoutManager= LinearLayoutManager(this.requireContext())
 
 
 

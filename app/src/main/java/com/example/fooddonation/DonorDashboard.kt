@@ -1,26 +1,29 @@
 package com.example.fooddonation
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.example.fooddonation.databinding.ActivityDonorDashboardBinding
 import com.google.android.gms.common.util.CollectionUtils.setOf
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+
 
 private lateinit var auth: FirebaseAuth;
 
@@ -42,9 +45,18 @@ class DonorDashboard : AppCompatActivity() {
 		auth = Firebase.auth
 
 		binding.appBarDonorDashboard.fab.setOnClickListener { view ->
-			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-				.setAction("Action", null).show()
+			Toast.makeText(this,"Intent will be added to add food",Toast.LENGTH_SHORT).show()
 		}
+
+
+		val colorDrawable = ColorDrawable(Color.parseColor("#114B5F"))
+
+		// Set BackgroundDrawable
+
+		// Set BackgroundDrawable
+		supportActionBar!!.setBackgroundDrawable(colorDrawable)
+
+
 		val drawerLayout: DrawerLayout = binding.drawerLayout
 		val navView1: NavigationView = binding.navView
 		val navController = findNavController(
