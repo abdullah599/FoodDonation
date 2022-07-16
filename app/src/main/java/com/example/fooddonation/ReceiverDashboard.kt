@@ -1,5 +1,7 @@
 package com.example.fooddonation
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -39,6 +41,13 @@ class ReceiverDashboard : AppCompatActivity() {
 		binding = ActivityReceiverDashboardBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
+
+		val colorDrawable = ColorDrawable(Color.parseColor("#DF0A0A"))
+
+		// Set BackgroundDrawable
+
+		// Set BackgroundDrawable
+		supportActionBar!!.setBackgroundDrawable(colorDrawable)
 		setSupportActionBar(binding.appBarReceiverDashboard.toolbar2)
 
 		auth = Firebase.auth		// auth initializing

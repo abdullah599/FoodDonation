@@ -49,7 +49,7 @@ class DonorDashboard : AppCompatActivity() {
 		}
 
 
-		val colorDrawable = ColorDrawable(Color.parseColor("#114B5F"))
+		val colorDrawable = ColorDrawable(Color.parseColor("#DF0A0A"))
 
 		// Set BackgroundDrawable
 

@@ -23,9 +23,7 @@ class DonorHomeFragment : Fragment() {
 		_binding = FragmentDonorHomeBinding.inflate(inflater, container, false)
 		val root: View = binding.root
 
-		val textView: TextView = binding.textHome
 
-			textView.text = "donor home"
 
 		return root
 	}
