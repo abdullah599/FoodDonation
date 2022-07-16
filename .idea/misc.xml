@@ -11,8 +11,13 @@
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/addbutton_foreground.xml" value="0.1" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/edit_text.xml" value="0.196" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.196" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.196" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.196" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.196" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.196" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_menu_camera.xml" value="0.196" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.196" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.196" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_donor_dashboard.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_login.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_main.xml" value="0.21666666666666667" />
@@ -20,9 +25,12 @@
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_sign_up.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/activity_sign_up2.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/app_bar_donor_dashboard.xml" value="0.176" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/content_receiver_dashboard.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/donor_history_row.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/fragment_donor_history.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/fragment_donor_home.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/layout/nav_header_donor_dashboard.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/menu/activity_donor_dashboard_drawer.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/mshak/AndroidStudioProjects/Food-Donation-App/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.196" />
         <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_donor_dashboard.xml" value="0.264" />
         <entry key="..\:/Users/mshak/Desktop/new/Food-Donation-App/app/src/main/res/layout/activity_login.xml" value="0.21666666666666667" />
