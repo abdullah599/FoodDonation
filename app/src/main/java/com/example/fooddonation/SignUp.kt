@@ -25,8 +25,8 @@ class SignUp : AppCompatActivity() {
         supportActionBar?.hide()
 
         auth = Firebase.auth
-        var intent=Intent(this, ReceiverDashboard::class.java)
-        startActivity(intent)
+//        var intent=Intent(this, ReceiverDashboard::class.java)
+//        startActivity(intent)
         binding.btnNext.setOnClickListener()
         {
             /** to move to next activity i.e Sign Up 2 **/
