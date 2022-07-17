@@ -63,8 +63,9 @@ class DonorDashboard : AppCompatActivity() {
 			R.id.nav_host_fragment_content_donor_dashboard) // Passing each menu ID as a set of Ids because each
 		// menu should be considered as top level destinations.
 		appBarConfiguration =
-			AppBarConfiguration(setOf(R.id.Donor_nav_home, R.id.Donor_nav_history, R.id.Donor_nav_logout),
-			                    drawerLayout)
+			AppBarConfiguration(
+				mutableSetOf(R.id.Donor_nav_home, R.id.Donor_nav_history, R.id.Donor_nav_logout),
+				drawerLayout)
 		setupActionBarWithNavController(navController, appBarConfiguration)
 		navView1.setupWithNavController(navController)
 

@@ -1,7 +1,5 @@
 package com.example.fooddonation
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -34,20 +32,11 @@ class ReceiverDashboard : AppCompatActivity() {
 
 	private lateinit var appBarConfiguration: AppBarConfiguration
 	private lateinit var binding: ActivityReceiverDashboardBinding
-
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-
 		binding = ActivityReceiverDashboardBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
-
-		val colorDrawable = ColorDrawable(Color.parseColor("#DF0A0A"))
-
-		// Set BackgroundDrawable
-
-		// Set BackgroundDrawable
-		supportActionBar!!.setBackgroundDrawable(colorDrawable)
 		setSupportActionBar(binding.appBarReceiverDashboard.toolbar2)
 
 		auth = Firebase.auth		// auth initializing
@@ -62,7 +51,7 @@ class ReceiverDashboard : AppCompatActivity() {
 			R.id.nav_host_fragment_content_receiver_dashboard) // Passing each menu ID as a set of Ids because each
 		// menu should be considered as top level destinations.
 		appBarConfiguration =
-			AppBarConfiguration(setOf(R.id.Receiver_nav_home, R.id.Receiver_nav_history, R.id.Receiver_nav_logout),
+			AppBarConfiguration(mutableSetOf(R.id.Receiver_nav_home, R.id.Receiver_nav_history, R.id.Receiver_nav_logout),
 			                    drawerLayout2)
 		setupActionBarWithNavController(navController, appBarConfiguration)
 		navView2.setupWithNavController(navController)
@@ -73,7 +62,7 @@ class ReceiverDashboard : AppCompatActivity() {
 		header.findViewById<TextView>(R.id.tv_header_email).text = auth.currentUser?.email ?: "No email"
 		// Name from database
 		val ref = auth.currentUser?.let { database.getReference("Users").child("Receiver").child(it.uid).child("name") }
-			// Getting data from database
+		// Getting data from database
 		ref?.addValueEventListener(object: ValueEventListener{
 			override fun onDataChange(snapshot: DataSnapshot) {
 				header.findViewById<TextView>(R.id.tv_header_name).text = snapshot.value.toString()
@@ -86,11 +75,10 @@ class ReceiverDashboard : AppCompatActivity() {
 
 	}
 
-//		override fun onCreateOptionsMenu(menu: Menu): Boolean { // Inflate the menu; this adds items to the action bar if it is present.
-//			menuInflater.inflate(R.menu.receiver_dashboard, menu)
-//			return true
-//		}
-
+	//		override fun onCreateOptionsMenu(menu: Menu): Boolean { // Inflate the menu; this adds items to the action bar if it is present.
+	//			menuInflater.inflate(R.menu.receiver_dashboard, menu)
+	//			return true
+	//		}
 	override fun onSupportNavigateUp(): Boolean {
 		val navController = findNavController(R.id.nav_host_fragment_content_receiver_dashboard)
 		return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
