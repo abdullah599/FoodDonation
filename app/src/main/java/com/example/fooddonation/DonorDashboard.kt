@@ -1,5 +1,6 @@
 package com.example.fooddonation
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -45,7 +46,9 @@ class DonorDashboard : AppCompatActivity() {
 		auth = Firebase.auth
 
 		binding.appBarDonorDashboard.fab.setOnClickListener { view ->
-			Toast.makeText(this,"Intent will be added to add food",Toast.LENGTH_SHORT).show()
+			//Toast.makeText(this,"Intent will be added to add food",Toast.LENGTH_SHORT).show()
+			val i = Intent(this, FoodForm::class.java)
+			startActivity(i)
 		}
 
 

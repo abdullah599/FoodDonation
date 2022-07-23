@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDonation">
         <activity
+            android:name=".FoodForm"
+            android:exported="false" />
+        <activity
             android:name=".ReceiverDashboard"
             android:exported="false"
             android:label="@string/title_activity_receiver_dashboard"
