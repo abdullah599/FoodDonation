@@ -9,25 +9,12 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/textHistory"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-
-        android:layout_weight="0.12"
-        android:paddingTop="10dp"
-        android:text="History"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textSize="40sp"
-        android:textStyle="bold" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.9"
         android:layout_marginRight="10dp"
+        android:layout_weight="0.9"
         android:paddingRight="10dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"

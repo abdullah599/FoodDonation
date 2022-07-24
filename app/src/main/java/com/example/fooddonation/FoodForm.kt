@@ -1,6 +1,7 @@
 package com.example.fooddonation
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -102,20 +103,23 @@ class FoodForm : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Updating the address and city for the donor
+            /** Updating the address and city for the donor **/
             ref = auth.currentUser?.let { database.getReference("Users").child("Donor").child(it.uid) }
             ref?.child("city")?.setValue(binding.etCity.text.toString())
             ref?.child("address")?.setValue(binding.etAdd.text.toString())
 
+            /** Food details to store in database **/
             val fname = binding.etFname.text.toString()
             val ftype = binding.etFtype.text.toString()
             val expiry = binding.etExp.text.toString()
             val donor_id = auth.currentUser?.uid.toString()
-            val status = "pending"
-
+            val status = "Pending"
+            // Food Object
             val food:Food = Food(donor_id,"", fname, ftype, expiry, status)
-            ref = database.getReference("Food").push()
+
+            ref = database.getReference("Food").push()      // automatically generates unique id
             ref?.setValue(food)
+
         }
     }
 }
