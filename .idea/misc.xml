@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1945" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/activity_food_form.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/activity_receiver_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/activity_sign_up2.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/donor_history_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/fragment_donor_history.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/fragment_receiver_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Food-Donation/app/src/main/res/layout/receiver_food_list_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/drawable/edit_text.xml" value="0.1945" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/FoodDonation/app/src/main/res/layout/activity_main.xml" value="0.2" />
