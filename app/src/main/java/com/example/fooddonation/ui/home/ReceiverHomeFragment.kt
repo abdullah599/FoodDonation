@@ -1,5 +1,6 @@
 package com.example.fooddonation.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,14 +18,24 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.time.LocalDate.now
+import java.util.*
+import kotlin.collections.ArrayList
 
-class ReceiverHomeFragment : Fragment() {
+class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 
 	private var _binding: FragmentReceiverHomeBinding? = null
 
 	// This property is only valid between onCreateView and
 	// onDestroyView.
 	private val binding get() = _binding!!
+	val auth = Firebase.auth
+	val database = Firebase.database
+
+	/** Food List and adapter for recycler view **/
+	lateinit var foodList: ArrayList<receiver_food_list>
+	lateinit var adapter:ReceiverFoodListAdapter
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
@@ -33,14 +44,10 @@ class ReceiverHomeFragment : Fragment() {
 		val root: View = binding.root
 
 		/** Food List and adapter for recycler view **/
-		val foodList: ArrayList<receiver_food_list> = ArrayList()
-		val adapter = ReceiverFoodListAdapter(foodList,this.requireContext())
-
-		// initializing auth
-		val auth = Firebase.auth
+		 foodList = ArrayList()
+		 adapter = ReceiverFoodListAdapter(foodList,this.requireContext(), this)
 
 		/** Database call **/
-		val database = Firebase.database
 		val ref = auth.currentUser?.let { database.getReference("Users").child("Receiver").child(it.uid) }
 
 		var receiverCity:String = ""
@@ -59,6 +66,7 @@ class ReceiverHomeFragment : Fragment() {
 		val ref2 = database.getReference("Food")
 		ref2.addValueEventListener(object: ValueEventListener{
 			override fun onDataChange(snapshot: DataSnapshot) {
+				foodList.clear()
 				for (food in snapshot.children)
 				{
 					// Getting donor's city
@@ -66,9 +74,9 @@ class ReceiverHomeFragment : Fragment() {
 					tempRef.addValueEventListener(object: ValueEventListener{
 						override fun onDataChange(snapshot: DataSnapshot) {
 							// checking if the donor and receiver are in the same city
-							if(snapshot.child("city").value.toString() == receiverCity)
+							if(snapshot.child("city").value.toString() == receiverCity && food.child("status").value.toString() == "Pending")
 							{
-								foodList.add(receiver_food_list(food.child("name").value.toString(), food.child("type").value.toString()))
+								foodList.add(receiver_food_list(food.child("name").value.toString(), food.child("type").value.toString(), food.key.toString()))
 								binding.rcvFoodList.adapter = adapter
 							}
 						}
@@ -92,5 +100,15 @@ class ReceiverHomeFragment : Fragment() {
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	override fun onButtonClick(pos: Int, key:String) {
+		val ref = database.getReference("Food").child(key)
+		ref.child("status").setValue("Donated")
+		ref.child("receiver_id").setValue(auth.currentUser?.uid)
+
+		// as the list will be populated again
+		foodList.clear()
+		binding.rcvFoodList.adapter = adapter
 	}
 }
