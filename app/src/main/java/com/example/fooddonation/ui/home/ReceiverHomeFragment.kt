@@ -1,11 +1,13 @@
 package com.example.fooddonation.ui.home
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,8 +20,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDate.MAX
 import java.time.LocalDate.now
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -65,10 +73,14 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 		// All food donated in the same city
 		val ref2 = database.getReference("Food")
 		ref2.addValueEventListener(object: ValueEventListener{
+			@RequiresApi(Build.VERSION_CODES.O)
 			override fun onDataChange(snapshot: DataSnapshot) {
 				foodList.clear()
 				for (food in snapshot.children)
 				{
+					// Checking expiry for the food
+					CheckExpiry(food.key, food.child("expiry").value.toString(), food.child("status").value.toString())
+
 					// Getting donor's city
 					val tempRef = database.getReference("Users").child("Donor").child(food.child("donor_id").value.toString())
 					tempRef.addValueEventListener(object: ValueEventListener{
@@ -97,11 +109,33 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 		return root
 	}
 
+	@SuppressLint("SimpleDateFormat")
+	private fun CheckExpiry(key: String?, date: String, status: String) {
+		val exp:Date = SimpleDateFormat("dd/mm/yyyy").parse(date) as Date
+
+		/** Getting current Date **/
+		val calendar:Calendar = Calendar.getInstance()
+		val year = calendar.get(Calendar.YEAR)
+		val month = calendar.get(Calendar.MONTH) + 1
+		val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+		val current = "$day/$month/$year"
+		val curr:Date = SimpleDateFormat("dd/mm/yyyy").parse(current) as Date
+
+		/** If the food item is expired and not donated yet **/
+		if(curr.after(exp) && status == "Pending")
+		{
+			val ref = Firebase.database.getReference("Food").child(key.toString()).child("status")
+			ref.setValue("Expired")
+		}
+	}
+
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
 	}
 
+	/** Definition for the interface function declared in rcv adapter **/
 	override fun onButtonClick(pos: Int, key:String) {
 		val ref = database.getReference("Food").child(key)
 		ref.child("status").setValue("Donated")

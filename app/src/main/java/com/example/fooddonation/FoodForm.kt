@@ -40,7 +40,7 @@ class FoodForm : AppCompatActivity() {
 
                 // Display Selected date in textbox
                 month = monthOfYear + 1
-                binding.etExp.setText("$day/$month/$year")
+                binding.etExp.setText("$dayOfMonth/$month/$year")
 
             }, year, month, day)
             dpd.show()
