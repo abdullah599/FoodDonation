@@ -89,7 +89,7 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 							if(snapshot.child("city").value.toString() == receiverCity && food.child("status").value.toString() == "Pending")
 							{
 								foodList.add(receiver_food_list(food.child("name").value.toString(), food.child("type").value.toString(), food.key.toString()))
-								binding.rcvFoodList.adapter = adapter
+
 							}
 						}
 						override fun onCancelled(error: DatabaseError) {
@@ -97,6 +97,7 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 						}
 					})
 				}
+				binding.rcvFoodList.adapter = adapter
 			}
 			override fun onCancelled(error: DatabaseError) {
 				Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
@@ -141,8 +142,8 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 		ref.child("status").setValue("Donated")
 		ref.child("receiver_id").setValue(auth.currentUser?.uid)
 
-		// as the list will be populated again
-		foodList.clear()
-		binding.rcvFoodList.adapter = adapter
+		foodList.remove(foodList[pos])
+
+
 	}
 }

@@ -15,9 +15,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.fooddonation.databinding.ActivityDonorDashboardBinding
-import com.google.android.gms.common.util.CollectionUtils.setOf
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -43,7 +41,7 @@ class DonorDashboard : AppCompatActivity() {
 
 		setSupportActionBar(binding.appBarDonorDashboard.toolbar)
 
-		auth = Firebase.auth
+		Auth = Firebase.auth
 
 		binding.appBarDonorDashboard.fab.setOnClickListener { view ->
 			//Toast.makeText(this,"Intent will be added to add food",Toast.LENGTH_SHORT).show()
@@ -75,9 +73,9 @@ class DonorDashboard : AppCompatActivity() {
 		/** Setting data (Email and Name) in header of drawer menu **/
 		val header: View = navView1.getHeaderView(0)
 		// Email from authentication
-		header.findViewById<TextView>(R.id.tv_header_email1).text = auth.currentUser?.email ?: "No email"
+		header.findViewById<TextView>(R.id.tv_header_email1).text = Auth.currentUser?.email ?: "No email"
 		// Name from database
-		val ref = auth.currentUser?.let { database.getReference("Users").child("Donor").child(it.uid).child("name") }
+		val ref = Auth.currentUser?.let { database.getReference("Users").child("Donor").child(it.uid).child("name") }
 			// Getting data from database
 		ref?.addValueEventListener(object: ValueEventListener {
 			override fun onDataChange(snapshot: DataSnapshot) {

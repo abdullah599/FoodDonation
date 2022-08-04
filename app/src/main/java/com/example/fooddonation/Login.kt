@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.fooddonation.databinding.ActivityLoginBinding
-import com.example.fooddonation.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.ktx.auth
@@ -14,7 +13,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
 private lateinit var auth: FirebaseAuth;
 
@@ -26,13 +24,13 @@ class Login : AppCompatActivity() {
         supportActionBar?.hide()
 
         // initializing auth
-        auth = Firebase.auth
+        Auth = Firebase.auth
 
 
         /** Checking if a user is already logged in - then logout the user **/
-        if(auth.currentUser != null)
+        if(Auth.currentUser != null)
         {
-            auth.signOut()
+            Auth.signOut()
         }
 
         /** Checks for empty fields **/
@@ -58,7 +56,7 @@ class Login : AppCompatActivity() {
             val pass = binding.etPass2.text.toString()
 
             /** Logging in the user **/
-            auth.signInWithEmailAndPassword(email, pass)
+            Auth.signInWithEmailAndPassword(email, pass)
                 // if the user is present in database
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -69,7 +67,7 @@ class Login : AppCompatActivity() {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 for(value in snapshot.children)
                                 {
-                                    if (value.key == auth.currentUser?.uid)
+                                    if (value.key == Auth.currentUser?.uid)
                                     {
                                         val i = Intent(applicationContext, DonorDashboard::class.java)
                                         startActivity(i)
@@ -89,7 +87,7 @@ class Login : AppCompatActivity() {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 for(value in snapshot.children)
                                 {
-                                    if (value.key == auth.currentUser?.uid)
+                                    if (value.key == Auth.currentUser?.uid)
                                     {
                                         val i = Intent(applicationContext, ReceiverDashboard::class.java)
                                         startActivity(i)

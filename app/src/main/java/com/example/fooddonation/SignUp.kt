@@ -24,7 +24,7 @@ class SignUp : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        auth = Firebase.auth
+        Auth = Firebase.auth
 //        var intent=Intent(this, ReceiverDashboard::class.java)
 //        startActivity(intent)
         binding.btnNext.setOnClickListener()
@@ -107,7 +107,7 @@ class SignUp : AppCompatActivity() {
     /** Checking if a user is logged in or not **/
     override fun onStart() {
         super.onStart()
-        if(auth.currentUser != null)
+        if(Auth.currentUser != null)
         {
             val database = Firebase.database
             /** Logging in if the user is a donor **/
@@ -116,7 +116,7 @@ class SignUp : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(value in snapshot.children)
                     {
-                        if (value.key == auth.currentUser?.uid)
+                        if (value.key == Auth.currentUser?.uid)
                         {
                             val i = Intent(applicationContext, DonorDashboard::class.java)
                             startActivity(i)
@@ -136,7 +136,7 @@ class SignUp : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(value in snapshot.children)
                     {
-                        if (value.key == auth.currentUser?.uid)
+                        if (value.key == Auth.currentUser?.uid)
                         {
                             val i = Intent(applicationContext, ReceiverDashboard::class.java)
                             startActivity(i)

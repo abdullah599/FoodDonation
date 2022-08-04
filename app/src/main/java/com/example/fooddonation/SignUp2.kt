@@ -3,12 +3,8 @@ package com.example.fooddonation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import androidx.annotation.NonNull
 import com.example.fooddonation.databinding.ActivitySignUp2Binding
-import com.example.fooddonation.databinding.ActivitySignUpBinding
 import com.example.fooddonation.models.User
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +25,7 @@ class SignUp2 : AppCompatActivity() {
         supportActionBar?.hide()
 
         // initializing auth
-        auth = Firebase.auth
+        Auth = Firebase.auth
 
         /** When sign up button is clicked **/
         binding.btnSignup.setOnClickListener()
@@ -66,7 +62,7 @@ class SignUp2 : AppCompatActivity() {
             val address:String = binding.etHouse.text.toString() + " " + binding.etStreet.text.toString()
 
             /** Creating a new user using the email and password **/
-            auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+            Auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                 // When a user is created successfully
                 if(it.isSuccessful)
                 {
@@ -74,7 +70,7 @@ class SignUp2 : AppCompatActivity() {
                     val user: User = User(name, email, city, address)
                     val database = Firebase.database
 
-                    auth.currentUser?.let { it1 ->
+                    Auth.currentUser?.let { it1 ->
                         database.getReference("Users").child(type).child(
                             it1.uid).setValue(user).addOnSuccessListener {
                             Toast.makeText(this, "user registered", Toast.LENGTH_SHORT).show()
