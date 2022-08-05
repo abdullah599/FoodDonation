@@ -20,14 +20,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDate.MAX
-import java.time.LocalDate.now
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -91,21 +84,27 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 								foodList.add(receiver_food_list(food.child("name").value.toString(), food.child("type").value.toString(), food.key.toString()))
 
 							}
+//							if(foodList.isNotEmpty())
+//								showRecyclerView()
+//							else
+//								noFoodAvailable()
 						}
 						override fun onCancelled(error: DatabaseError) {
 							Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
 						}
 					})
 				}
-				binding.rcvFoodList.adapter = adapter
+
+				binding.rcvfoodList.adapter = adapter
+
 			}
 			override fun onCancelled(error: DatabaseError) {
 				Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
 			}
 		})
 
-		binding.rcvFoodList.adapter = adapter
-		binding.rcvFoodList.layoutManager = LinearLayoutManager(this.requireContext())
+		binding.rcvfoodList.adapter = adapter
+		binding.rcvfoodList.layoutManager = LinearLayoutManager(this.requireContext())
 
 		return root
 	}
@@ -138,12 +137,58 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 
 	/** Definition for the interface function declared in rcv adapter **/
 	override fun onButtonClick(pos: Int, key:String) {
-		val ref = database.getReference("Food").child(key)
-		ref.child("status").setValue("Donated")
-		ref.child("receiver_id").setValue(auth.currentUser?.uid)
+		val foodRef = database.getReference("Food").child(key)
+		foodRef.child("status").setValue("Finding Rider")
+		foodRef.child("receiver_id").setValue(auth.currentUser?.uid)
 
 		foodList.remove(foodList[pos])
 
+		hideRecyclerView()
+
+		foodRef.addValueEventListener(object: ValueEventListener{
+			override fun onDataChange(snapshot: DataSnapshot) {
+				if(snapshot.child("status").value.toString() != "Finding Rider")
+				{
+						showRecyclerView()
+
+
+				}
+			}
+			override fun onCancelled(error: DatabaseError) {
+				Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
+			}
+		})
+
 
 	}
+	fun showRecyclerView(){
+
+		binding.rcvfoodList.visibility=View.VISIBLE
+		binding.textView.visibility=View.VISIBLE
+		binding.animationView2.visibility=View.GONE
+		binding.tv2.visibility=View.GONE
+		binding.tv3.visibility=View.GONE
+		binding.riderImg.visibility=View.GONE
+		binding.tv4.visibility=View.GONE
+
+	}
+	fun hideRecyclerView(){
+		binding.rcvfoodList.visibility=View.GONE
+		binding.textView.visibility=View.GONE
+		binding.animationView2.visibility=View.VISIBLE
+		binding.tv2.visibility=View.VISIBLE
+		binding.tv3.visibility=View.VISIBLE
+		binding.riderImg.visibility=View.VISIBLE
+		binding.tv4.visibility=View.GONE
+	}
+	fun noFoodAvailable(){
+		binding.rcvfoodList.visibility=View.GONE
+		binding.textView.visibility=View.VISIBLE
+		binding.animationView2.visibility=View.GONE
+		binding.tv2.visibility=View.GONE
+		binding.tv3.visibility=View.GONE
+		binding.riderImg.visibility=View.GONE
+		binding.tv4.visibility=View.VISIBLE
+	}
+
 }

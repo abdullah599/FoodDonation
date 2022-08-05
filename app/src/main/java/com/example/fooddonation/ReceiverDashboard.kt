@@ -40,10 +40,7 @@ class ReceiverDashboard : AppCompatActivity() {
 
 		Auth = Firebase.auth		// auth initializing
 
-		binding.appBarReceiverDashboard.fab2.setOnClickListener { view ->
-			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-				.setAction("Action", null).show()
-		}
+
 		val drawerLayout2: DrawerLayout = binding.drawerLayout2
 		val navView2: NavigationView = binding.navView2
 		val navController = findNavController(
