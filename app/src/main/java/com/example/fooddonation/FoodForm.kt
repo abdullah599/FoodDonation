@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.fooddonation.databinding.ActivityFoodFormBinding
 import com.example.fooddonation.models.Food
 import com.example.fooddonation.models.User
+import com.example.fooddonation.ui.home.DonorHomeFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -121,6 +122,9 @@ class FoodForm : AppCompatActivity() {
 
             ref = database.getReference("Food").push()      // automatically generates unique id
             ref?.setValue(food)
+            Toast.makeText(this,"Your Food Waiting For Its Receiver",Toast.LENGTH_LONG).show()
+            var i =Intent(this,DonorDashboard::class.java)
+            startActivity(i)
 
         }
     }
