@@ -36,7 +36,7 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 
 	/** Food List and adapter for recycler view **/
 	lateinit var foodList: ArrayList<receiver_food_list>
-	lateinit var adapter:ReceiverFoodListAdapter
+	lateinit var adapter: ReceiverFoodListAdapter
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
@@ -45,19 +45,21 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 		val root: View = binding.root
 
 		/** Food List and adapter for recycler view **/
-		 foodList = ArrayList()
-		 adapter = ReceiverFoodListAdapter(foodList,this.requireContext(), this)
+		foodList = ArrayList()
+		adapter = ReceiverFoodListAdapter(foodList, this.requireContext(), this)
 
 		/** Database call **/
-		val ref = auth.currentUser?.let { database.getReference("Users").child("Receiver").child(it.uid) }
+		val ref =
+			auth.currentUser?.let { database.getReference("Users").child("Receiver").child(it.uid) }
 
-		var receiverCity:String = ""
+		var receiverCity: String = ""
 
 		// Getting the city of the current user - receiver
-		ref?.addValueEventListener(object: ValueEventListener{
+		ref?.addValueEventListener(object : ValueEventListener {
 			override fun onDataChange(snapshot: DataSnapshot) {
 				receiverCity = snapshot.child("city").value.toString()
 			}
+
 			override fun onCancelled(error: DatabaseError) {
 				Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
 			}
@@ -65,39 +67,22 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 
 		// All food donated in the same city
 		val ref2 = database.getReference("Food")
-		ref2.addValueEventListener(object: ValueEventListener{
-			@RequiresApi(Build.VERSION_CODES.O)
+		ref2.addValueEventListener(object : ValueEventListener {
 			override fun onDataChange(snapshot: DataSnapshot) {
 				foodList.clear()
-				for (food in snapshot.children)
-				{
-					// Checking expiry for the food
+				for (food in snapshot.children) {					// Checking expiry for the food
 					CheckExpiry(food.key, food.child("expiry").value.toString(), food.child("status").value.toString())
 
-					// Getting donor's city
-					val tempRef = database.getReference("Users").child("Donor").child(food.child("donor_id").value.toString())
-					tempRef.addValueEventListener(object: ValueEventListener{
-						override fun onDataChange(snapshot: DataSnapshot) {
-							// checking if the donor and receiver are in the same city
-							if(snapshot.child("city").value.toString() == receiverCity && food.child("status").value.toString() == "Pending")
-							{
-								foodList.add(receiver_food_list(food.child("name").value.toString(), food.child("type").value.toString(), food.key.toString()))
-
-							}
-//							if(foodList.isNotEmpty())
-//								showRecyclerView()
-//							else
-//								noFoodAvailable()
-						}
-						override fun onCancelled(error: DatabaseError) {
-							Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
-						}
-					})
+					// checking if the donor and receiver are in the same city
+					if (food.child("city").value.toString() == receiverCity && food.child("status").value.toString() == "Pending") {
+						foodList.add(receiver_food_list(food.child("name").value.toString(), food.child("type").value.toString(), food.key.toString()))
+					}
 				}
 
-				binding.rcvfoodList.adapter = adapter
+				binding.rcvfoodList.adapter?.notifyDataSetChanged()
 
 			}
+
 			override fun onCancelled(error: DatabaseError) {
 				Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
 			}
@@ -111,20 +96,19 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 
 	@SuppressLint("SimpleDateFormat")
 	private fun CheckExpiry(key: String?, date: String, status: String) {
-		val exp:Date = SimpleDateFormat("dd/mm/yyyy").parse(date) as Date
+		val exp: Date = SimpleDateFormat("dd/mm/yyyy").parse(date) as Date
 
 		/** Getting current Date **/
-		val calendar:Calendar = Calendar.getInstance()
+		val calendar: Calendar = Calendar.getInstance()
 		val year = calendar.get(Calendar.YEAR)
 		val month = calendar.get(Calendar.MONTH) + 1
 		val day = calendar.get(Calendar.DAY_OF_MONTH)
 
 		val current = "$day/$month/$year"
-		val curr:Date = SimpleDateFormat("dd/mm/yyyy").parse(current) as Date
+		val curr: Date = SimpleDateFormat("dd/mm/yyyy").parse(current) as Date
 
 		/** If the food item is expired and not donated yet **/
-		if(curr.after(exp) && status == "Pending")
-		{
+		if (curr.after(exp) && status == "Pending") {
 			val ref = Firebase.database.getReference("Food").child(key.toString()).child("status")
 			ref.setValue("Expired")
 		}
@@ -136,24 +120,24 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 	}
 
 	/** Definition for the interface function declared in rcv adapter **/
-	override fun onButtonClick(pos: Int, key:String) {
+	override fun onButtonClick(pos: Int, key: String) {
 		val foodRef = database.getReference("Food").child(key)
 		foodRef.child("status").setValue("Finding Rider")
 		foodRef.child("receiver_id").setValue(auth.currentUser?.uid)
 
-		foodList.remove(foodList[pos])
+
 
 		hideRecyclerView()
 
-		foodRef.addValueEventListener(object: ValueEventListener{
+		foodRef.addValueEventListener(object : ValueEventListener {
 			override fun onDataChange(snapshot: DataSnapshot) {
-				if(snapshot.child("status").value.toString() != "Finding Rider")
-				{
-						showRecyclerView()
-
+				if (snapshot.child("status").value.toString() != "Finding Rider") {
+					showRecyclerView()
+					binding.rcvfoodList.adapter?.notifyDataSetChanged()
 
 				}
 			}
+
 			override fun onCancelled(error: DatabaseError) {
 				Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
 			}
@@ -161,34 +145,37 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 
 
 	}
-	fun showRecyclerView(){
 
-		binding.rcvfoodList.visibility=View.VISIBLE
-		binding.textView.visibility=View.VISIBLE
-		binding.animationView2.visibility=View.GONE
-		binding.tv2.visibility=View.GONE
-		binding.tv3.visibility=View.GONE
-		binding.riderImg.visibility=View.GONE
-		binding.tv4.visibility=View.GONE
+	fun showRecyclerView() {
+
+		binding.rcvfoodList.visibility = View.VISIBLE
+		binding.textView.visibility = View.VISIBLE
+		binding.animationView2.visibility = View.GONE
+		binding.tv2.visibility = View.GONE
+		binding.tv3.visibility = View.GONE
+		binding.riderImg.visibility = View.GONE
+		binding.tv4.visibility = View.GONE
 
 	}
-	fun hideRecyclerView(){
-		binding.rcvfoodList.visibility=View.GONE
-		binding.textView.visibility=View.GONE
-		binding.animationView2.visibility=View.VISIBLE
-		binding.tv2.visibility=View.VISIBLE
-		binding.tv3.visibility=View.VISIBLE
-		binding.riderImg.visibility=View.VISIBLE
-		binding.tv4.visibility=View.GONE
+
+	fun hideRecyclerView() {
+		binding.rcvfoodList.visibility = View.GONE
+		binding.textView.visibility = View.GONE
+		binding.animationView2.visibility = View.VISIBLE
+		binding.tv2.visibility = View.VISIBLE
+		binding.tv3.visibility = View.VISIBLE
+		binding.riderImg.visibility = View.VISIBLE
+		binding.tv4.visibility = View.GONE
 	}
-	fun noFoodAvailable(){
-		binding.rcvfoodList.visibility=View.GONE
-		binding.textView.visibility=View.VISIBLE
-		binding.animationView2.visibility=View.GONE
-		binding.tv2.visibility=View.GONE
-		binding.tv3.visibility=View.GONE
-		binding.riderImg.visibility=View.GONE
-		binding.tv4.visibility=View.VISIBLE
+
+	fun noFoodAvailable() {
+		binding.rcvfoodList.visibility = View.GONE
+		binding.textView.visibility = View.VISIBLE
+		binding.animationView2.visibility = View.GONE
+		binding.tv2.visibility = View.GONE
+		binding.tv3.visibility = View.GONE
+		binding.riderImg.visibility = View.GONE
+		binding.tv4.visibility = View.VISIBLE
 	}
 
 }

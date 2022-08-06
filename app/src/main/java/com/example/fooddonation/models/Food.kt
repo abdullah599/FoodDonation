@@ -7,6 +7,7 @@ class Food {
     var type: String = ""
     var expiry: String = ""
     var status: String = ""
+    var city: String=""
 
     constructor(
         donor_id: String,
@@ -14,7 +15,8 @@ class Food {
         name: String,
         type: String,
         expiry: String,
-        status: String
+        status: String,
+        city: String
     ) {
         this.donor_id = donor_id
         this.receiver_id = receiver_id
@@ -22,5 +24,6 @@ class Food {
         this.type = type
         this.expiry = expiry
         this.status = status
+        this.city=city
     }
 }

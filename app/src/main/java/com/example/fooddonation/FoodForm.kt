@@ -49,11 +49,13 @@ class FoodForm : AppCompatActivity() {
         /** Getting address from database **/
         val auth = Firebase.auth
         val database = Firebase.database
+        var city=""
         var ref = auth.currentUser?.let { database.getReference("Users").child("Donor").child(it.uid) }
         ref?.addValueEventListener(object : ValueEventListener
         {
             override fun onDataChange(snapshot: DataSnapshot) {
-                binding.etCity.setText(snapshot.child("city").value.toString())
+                city=snapshot.child("city").value.toString()
+                binding.etCity.setText(city)
                 binding.etAdd.setText(snapshot.child("address").value.toString())
             }
 
@@ -115,7 +117,7 @@ class FoodForm : AppCompatActivity() {
             val donor_id = auth.currentUser?.uid.toString()
             val status = "Pending"
             // Food Object
-            val food:Food = Food(donor_id,"", fname, ftype, expiry, status)
+            val food = Food(donor_id,"", fname, ftype, expiry, status,city)
 
             ref = database.getReference("Food").push()      // automatically generates unique id
             ref?.setValue(food)
