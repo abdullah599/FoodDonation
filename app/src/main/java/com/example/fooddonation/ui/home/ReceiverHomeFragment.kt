@@ -78,8 +78,14 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 						foodList.add(receiver_food_list(food.child("name").value.toString(), food.child("type").value.toString(), food.key.toString()))
 					}
 				}
-
+				if(foodList.isEmpty()){
+					noFoodAvailable()
+				}
+				else{
+					showRecyclerView()
+				}
 				binding.rcvfoodList.adapter?.notifyDataSetChanged()
+
 
 			}
 
@@ -132,9 +138,18 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 		foodRef.addValueEventListener(object : ValueEventListener {
 			override fun onDataChange(snapshot: DataSnapshot) {
 				if (snapshot.child("status").value.toString() != "Finding Rider") {
-					showRecyclerView()
-					binding.rcvfoodList.adapter?.notifyDataSetChanged()
 
+					binding.rcvfoodList.adapter?.notifyDataSetChanged()
+					if(foodList.isEmpty()){
+						noFoodAvailable()
+					}
+					else{
+						showRecyclerView()
+					}
+
+				}
+				else{
+					hideRecyclerView()
 				}
 			}
 
