@@ -26,8 +26,6 @@ class Login : AppCompatActivity() {
         // initializing auth
         Auth = Firebase.auth
 
-        var intent=Intent(this, RiderDashboard::class.java)
-        startActivity(intent)
 
         /** Checking if a user is already logged in - then logout the user **/
         if(Auth.currentUser != null)
@@ -63,6 +61,24 @@ class Login : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val database = Firebase.database
+
+                        /** Logging in as an admin **/
+                        database.getReference("Admin").addValueEventListener(object: ValueEventListener
+                        {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                if(Auth.currentUser?.uid?.let { it1 -> snapshot.hasChild(it1) } == true)
+                                {
+                                    val i = Intent(applicationContext, AdminDashboard::class.java)
+                                    startActivity(i)
+                                    finish()
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                //Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                            }
+                        })
+
                         /** Logging in if the user is a donor **/
                         var ref = database.getReference("Users").child("Donor")
                         ref.addValueEventListener(object: ValueEventListener {
