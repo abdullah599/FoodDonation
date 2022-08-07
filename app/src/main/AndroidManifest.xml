@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDonation">
         <activity
+            android:name=".RiderDashboard"
+            android:exported="false"
+            android:label="@string/title_activity_rider_dashboard"
+            android:theme="@style/Theme.FoodDonation.NoActionBar" />
+        <activity
             android:name=".FoodForm"
             android:exported="false" />
         <activity
@@ -25,8 +30,6 @@
         <activity
             android:name=".Login"
             android:exported="false" />
-
-
         <activity
             android:name=".SignUp2"
             android:exported="false" />
@@ -42,8 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

@@ -26,6 +26,8 @@ class Login : AppCompatActivity() {
         // initializing auth
         Auth = Firebase.auth
 
+        var intent=Intent(this, RiderDashboard::class.java)
+        startActivity(intent)
 
         /** Checking if a user is already logged in - then logout the user **/
         if(Auth.currentUser != null)

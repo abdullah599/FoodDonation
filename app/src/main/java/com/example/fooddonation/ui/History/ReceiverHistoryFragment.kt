@@ -58,7 +58,6 @@ class ReceiverHistoryFragment : Fragment() {
 				}
 				(binding.RrvHistory.adapter as DonorHistoryAdapter).notifyDataSetChanged()
 
-
 			}
 
 			override fun onCancelled(error: DatabaseError) {

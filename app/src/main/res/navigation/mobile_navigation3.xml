@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation3"
+    app:startDestination="@+id/Rider_nav_home">
+
+    <fragment
+        android:id="@+id/Rider_nav_home"
+        android:name="com.example.fooddonation.ui.home.RiderHomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_rider_home" />
+
+    <fragment
+        android:id="@+id/Rider_nav_history"
+        android:name="com.example.fooddonation.ui.History.RiderHistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_rider_history" />
+
+    <fragment
+        android:id="@+id/Rider_nav_logout"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/activity_login" />
+</navigation>
