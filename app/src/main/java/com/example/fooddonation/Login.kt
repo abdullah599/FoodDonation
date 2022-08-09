@@ -87,9 +87,15 @@ class Login : AppCompatActivity() {
                                 {
                                     if (value.key == Auth.currentUser?.uid)
                                     {
-                                        val i = Intent(applicationContext, DonorDashboard::class.java)
+                                        if(value.child("isban").value.toString()=="no")
+                                        { val i = Intent(applicationContext, DonorDashboard::class.java)
                                         startActivity(i)
-                                        finish()
+                                        finish()}
+                                        else{
+                                            Toast.makeText(this@Login, "Your account has been banned", Toast.LENGTH_SHORT).show()
+                                            binding.etEmail2.text.clear()
+                                            binding.etPass2.text.clear()
+                                        }
                                     }
                                 }
                             }
@@ -107,9 +113,15 @@ class Login : AppCompatActivity() {
                                 {
                                     if (value.key == Auth.currentUser?.uid)
                                     {
-                                        val i = Intent(applicationContext, ReceiverDashboard::class.java)
-                                        startActivity(i)
-                                        finish()
+                                        if(value.child("isban").value.toString()=="no")
+                                        { val i = Intent(applicationContext, ReceiverDashboard::class.java)
+                                            startActivity(i)
+                                            finish()}
+                                        else{
+                                            Toast.makeText(this@Login, "Your account has been banned", Toast.LENGTH_SHORT).show()
+                                            binding.etEmail2.text.clear()
+                                            binding.etPass2.text.clear()
+                                        }
                                     }
                                 }
                             }
@@ -119,7 +131,7 @@ class Login : AppCompatActivity() {
                             }
                         })
 
-                        /** Logging in if the user is a receiver **/
+                        /** Logging in if the user is a rider **/
                         ref = database.getReference("Users").child("Rider")
                         ref.addValueEventListener(object: ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
@@ -127,9 +139,15 @@ class Login : AppCompatActivity() {
                                 {
                                     if (value.key == Auth.currentUser?.uid)
                                     {
-                                        val i = Intent(applicationContext, RiderDashboard::class.java)
-                                        startActivity(i)
-                                        finish()
+                                        if(value.child("isban").value.toString()=="no")
+                                        { val i = Intent(applicationContext, RiderDashboard::class.java)
+                                            startActivity(i)
+                                            finish()}
+                                        else{
+                                            Toast.makeText(this@Login, "Your account has been banned", Toast.LENGTH_SHORT).show()
+                                            binding.etEmail2.text.clear()
+                                            binding.etPass2.text.clear()
+                                        }
                                     }
                                 }
                             }

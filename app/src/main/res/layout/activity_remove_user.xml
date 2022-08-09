@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#114B5F"
+    tools:context=".SignUp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_removeuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Remove User"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/edit_text"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup" />
+
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:layout_height="51dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+
+      android:layout_marginTop="44dp">
+
+        <RadioButton
+            android:id="@+id/rb_donor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3333"
+            android:buttonTint="@color/white"
+            android:text="Donor"
+            android:textColor="@color/white"
+            android:textColorHighlight="#CA1C3D"
+            android:textColorLink="#CA1C3D"
+            android:textSize="18sp" />
+        <RadioButton
+            android:id="@+id/rb_receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3333"
+
+            android:buttonTint="@color/white"
+            android:text="Receiver"
+            android:textColor="@color/white"
+            android:textColorHighlight="#CA1C3D"
+            android:textColorLink="#CA1C3D"
+            android:textSize="18sp" />
+
+
+        <RadioButton
+            android:id="@+id/rb_rider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="0.333"
+            android:buttonTint="@color/white"
+            android:text="Rider"
+            android:textColor="@color/white"
+            android:textColorHighlight="#CA1C3D"
+            android:textColorLink="#CA1C3D"
+            android:textSize="18sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+
+        android:text="Are you Sure?"
+        android:textColor="@color/white"
+      android:layout_marginBottom="5dp"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:layout_height="51dp"
+
+        android:orientation="horizontal"
+
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_name">
+
+        <RadioButton
+            android:id="@+id/rb_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/white"
+            android:text="Yes"
+            android:textColor="@color/white"
+            android:textColorHighlight="#CA1C3D"
+            android:textColorLink="#CA1C3D"
+            android:textSize="18sp" />
+
+
+        <RadioButton
+            android:id="@+id/rb_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_weight="1"
+            android:buttonTint="@color/white"
+            android:text="No"
+            android:textColor="@color/white"
+            android:textColorHighlight="#CA1C3D"
+            android:textColorLink="#CA1C3D"
+            android:textSize="18sp" />
+    </RadioGroup>
+    <Button
+        android:id="@+id/btn_remove"
+
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="Remove"
+        android:backgroundTint="@color/red"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="566dp" />
+
+</LinearLayout>

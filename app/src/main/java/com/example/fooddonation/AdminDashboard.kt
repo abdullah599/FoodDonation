@@ -79,6 +79,10 @@ class AdminDashboard : AppCompatActivity() {
 			var i = Intent(this, RiderSignup::class.java)
 			startActivity(i)
 		}
+		binding.btnRemove.setOnClickListener() {
+			var i = Intent(this, RemoveUser::class.java)
+			startActivity(i)
+		}
 
 		//for stablility
 		Auth.signOut()
