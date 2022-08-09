@@ -1,10 +1,10 @@
 package com.example.fooddonation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.fooddonation.databinding.ActivityAdminDashboardBinding
-import com.example.fooddonation.databinding.ActivityLoginBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -56,5 +56,11 @@ class AdminDashboard : AppCompatActivity() {
         binding.tvDonorCount.setText(donorCount.toString())
         binding.tvReceiverCount.setText(receiverCount.toString())
         binding.tvUserCount.setText((donorCount+receiverCount).toString())
+
+        binding.btnAdd.setOnClickListener(){
+            var i= Intent(this, RiderSignup::class.java)
+            startActivity(i)
+        }
     }
+
 }

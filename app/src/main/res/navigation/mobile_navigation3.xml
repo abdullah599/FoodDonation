@@ -17,8 +17,9 @@
         android:label="History"
         tools:layout="@layout/fragment_rider_history" />
 
-    <fragment
+    <activity
         android:id="@+id/Rider_nav_logout"
-        android:label="@string/menu_slideshow"
+        android:name="com.example.fooddonation.Login"
+        android:label="Logout"
         tools:layout="@layout/activity_login" />
 </navigation>

@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText(applicationContext, "yes", Toast.LENGTH_SHORT).show()
                 if (FirebaseAuth.getInstance().currentUser == null)
                 {
-                    val i = Intent(applicationContext, Login::class.java)
+                    val i = Intent(applicationContext, AdminDashboard::class.java)
                 startActivity(i)
                 finish()
                 }
