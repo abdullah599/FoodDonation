@@ -7,6 +7,7 @@ class User {
     var email: String = ""
     var city:String = ""
     var address:String = ""
+    var isban:String=""
 
    constructor(name: String, email:String, city:String, address:String)
    {
@@ -14,5 +15,6 @@ class User {
        this.email = email
        this.city = city
        this.address = address
+       isban="no"
    }
 }
