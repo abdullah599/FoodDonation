@@ -26,12 +26,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(p0: Animator?) {
+
                 //Toast.makeText(applicationContext, "yes", Toast.LENGTH_SHORT).show()
                 if (FirebaseAuth.getInstance().currentUser == null)
                 {
-                    val i = Intent(applicationContext, AdminDashboard::class.java)
-                startActivity(i)
-                finish()
+                    val i = Intent(applicationContext, Login::class.java)
+                    startActivity(i)
+                    finish()
+
                 }
                 else{
                     auth= FirebaseAuth.getInstance()
@@ -75,6 +77,66 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
                         }
                     })
+
+                    /** Logging in if the user is a rider **/
+                    ref = database.getReference("Users").child("Rider")
+                    ref.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for(value in snapshot.children)
+                            {
+                                if (value.key == auth.currentUser?.uid)
+                                {
+                                    val i = Intent(applicationContext, RiderDashboard::class.java)
+                                    startActivity(i)
+                                    finish()
+                                }
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+
+                    /** Logging in if the user is a rider **/
+                    ref = database.getReference("Admin")
+                    ref.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for(value in snapshot.children)
+                            {
+                                if (value.key == auth.currentUser?.uid)
+                                {
+                                    val i = Intent(applicationContext, AdminDashboard::class.java)
+                                    startActivity(i)
+                                    finish()
+                                }
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+
+//                    /** Logging in if the user is a admin **/
+//                    ref = database.getReference("Users").child("Admin")
+//                    ref.addValueEventListener(object: ValueEventListener {
+//                        override fun onDataChange(snapshot: DataSnapshot) {
+//                            for(value in snapshot.children)
+//                            {
+//                                if (value.key == auth.currentUser?.uid)
+//                                {
+//                                    val i = Intent(applicationContext, AdminDashboard::class.java)
+//                                    startActivity(i)
+//                                    finish()
+//                                }
+//                            }
+//                        }
+//
+//                        override fun onCancelled(error: DatabaseError) {
+//                            Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
+//                        }
+//                    })
 
                 }
             }

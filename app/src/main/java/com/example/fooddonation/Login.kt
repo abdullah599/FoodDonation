@@ -119,6 +119,26 @@ class Login : AppCompatActivity() {
                             }
                         })
 
+                        /** Logging in if the user is a receiver **/
+                        ref = database.getReference("Users").child("Rider")
+                        ref.addValueEventListener(object: ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                for(value in snapshot.children)
+                                {
+                                    if (value.key == Auth.currentUser?.uid)
+                                    {
+                                        val i = Intent(applicationContext, RiderDashboard::class.java)
+                                        startActivity(i)
+                                        finish()
+                                    }
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                //Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                            }
+                        })
+
 
                     } else {
                         /** Exceptions when login failed **/
