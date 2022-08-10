@@ -106,7 +106,5 @@ class RiderSignup2 : AppCompatActivity() {
 			startActivity(intent)
 		}
 
-
-
 	}
 }

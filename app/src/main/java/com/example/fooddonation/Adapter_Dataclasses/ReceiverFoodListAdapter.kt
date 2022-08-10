@@ -42,5 +42,4 @@ class ReceiverFoodListAdapter(var foodList: List<receiver_food_list>, var contex
         fun onButtonClick(pos:Int, key:String)
     }
 
-
 }

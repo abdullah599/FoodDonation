@@ -2,6 +2,9 @@ package com.example.fooddonation
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -12,6 +15,9 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fooddonation.databinding.ActivityRiderDashboardBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 class RiderDashboard : AppCompatActivity() {
 
@@ -26,10 +32,7 @@ class RiderDashboard : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarRiderDashboard.toolbar)
 
-        binding.appBarRiderDashboard.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_rider_dashboard)
@@ -42,6 +45,23 @@ class RiderDashboard : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        /** Setting data in header of drawer menu **/
+        val header: View = navView.getHeaderView(0)
+        // Email from authentication
+        header.findViewById<TextView>(R.id.tv_header_rider_email).text = Auth.currentUser?.email ?: "No email"
+        // Name from database
+        val ref = Auth.currentUser?.let { database.getReference("Users").child("Rider").child(it.uid).child("name") }
+        // Getting data from database
+        ref?.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                header.findViewById<TextView>(R.id.tv_header_rider_name).text = snapshot.value.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "error", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

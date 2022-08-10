@@ -70,7 +70,8 @@ class ReceiverHomeFragment : Fragment(), ReceiverFoodListAdapter.OnBtnClick {
 		ref2.addValueEventListener(object : ValueEventListener {
 			override fun onDataChange(snapshot: DataSnapshot) {
 				foodList.clear()
-				for (food in snapshot.children) {					// Checking expiry for the food
+				for (food in snapshot.children) {
+					// Checking expiry for the food
 					CheckExpiry(food.key, food.child("expiry").value.toString(), food.child("status").value.toString())
 
 					// checking if the donor and receiver are in the same city

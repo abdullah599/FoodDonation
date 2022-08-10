@@ -24,9 +24,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
 
-private lateinit var auth: FirebaseAuth;
-
-
 class DonorDashboard : AppCompatActivity() {
 
 	private lateinit var binding: ActivityDonorDashboardBinding
@@ -41,7 +38,6 @@ class DonorDashboard : AppCompatActivity() {
 
 		setSupportActionBar(binding.appBarDonorDashboard.toolbar)
 
-		Auth = Firebase.auth
 
 		binding.appBarDonorDashboard.fab.setOnClickListener { view ->
 			//Toast.makeText(this,"Intent will be added to add food",Toast.LENGTH_SHORT).show()

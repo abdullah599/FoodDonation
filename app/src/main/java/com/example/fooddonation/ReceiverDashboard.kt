@@ -22,9 +22,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-lateinit var Auth: FirebaseAuth;
+var Auth: FirebaseAuth = Firebase.auth;
 val database = Firebase.database
-
 
 
 class ReceiverDashboard : AppCompatActivity() {
@@ -38,7 +37,6 @@ class ReceiverDashboard : AppCompatActivity() {
 
 		setSupportActionBar(binding.appBarReceiverDashboard.toolbar2)
 
-		Auth = Firebase.auth		// auth initializing
 
 
 		val drawerLayout2: DrawerLayout = binding.drawerLayout2
