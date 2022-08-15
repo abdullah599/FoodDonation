@@ -1,12 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ui.home.RiderHomeFragment">
+    tools:context=".ui.home.RiderHomeFragment"
+    android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/rImg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:visibility="gone"
+        />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView3"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.4"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_url="https://assets10.lottiefiles.com/packages/lf20_uoncptbk.json" />
+
+    <TextView
+        android:id="@+id/tv31"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:text="From:  "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        />
+
+    <TextView
+
+        android:id="@+id/tv32"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="To:"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/dlvBtn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/purple_200"
+        android:text="Delivered"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -15,17 +75,21 @@
         android:text="Available Orders"
         android:textColor="@color/white"
         android:textSize="34sp"
+        android:layout_gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_orderList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="84dp"
+      android:layout_marginTop="10dp"
+        tools:listitem="@layout/rider_order_list_row"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+    />
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/background"
         app:cardCornerRadius="9dp"
+        app:cardElevation="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,52 +30,60 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/row_no21"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+
+                    android:paddingLeft="10dp"
+                    android:text="1."
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/row_sender_address"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:text="34 abc  TO  88 Wahdat Rd"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/row_receiver_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:paddingLeft="10dp"
                     android:paddingTop="10dp"
-                    android:text="34 abc  TO  88 Wahdat Rd"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:paddingBottom="10dp"
+                    android:text="From: "
+                    android:textColor="#F9FBFC"
+                    android:textSize="20sp"  />
+
 
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/acceptBtn"
-                    android:layout_width="100dp"
+                <TextView
+                    android:id="@+id/row_receiver_address"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:backgroundTint="@color/purple_200"
-                    android:text="Accept"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white" />
-            </RelativeLayout>
+                    android:layout_marginLeft="65dp"
+                    android:layout_weight="1"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="To: "
+                    android:textColor="#F9FBFC"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/acceptBtn"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+                android:backgroundTint="@color/purple_200"
+                android:text="Order"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

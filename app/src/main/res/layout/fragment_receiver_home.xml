@@ -78,6 +78,7 @@
         android:paddingRight="10dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
+        tools:listitem="@layout/receiver_food_list_row"
 
         />
     <TextView

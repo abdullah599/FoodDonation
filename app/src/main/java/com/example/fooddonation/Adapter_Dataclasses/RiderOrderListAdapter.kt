@@ -28,7 +28,7 @@ class RiderOrderListAdapter(var orderList: List<rider_order_list>, var context: 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.apply {
-            //findViewById<TextView>(R.id.row_no3).text=(position+1).toString()
+            findViewById<TextView>(R.id.row_no21).text=(position+1).toString()+". "
             findViewById<TextView>(R.id.row_sender_address).text = "FROM:  " + orderList[position].donor_add
             findViewById<TextView>(R.id.row_receiver_address).text = "TO:  " + orderList[position].receiver_add
         }
